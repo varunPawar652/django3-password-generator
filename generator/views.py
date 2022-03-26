@@ -1,20 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import random
+import string
+
+
 
 def A1(request):
     return HttpResponse("Hey Jadugar aad hello")
 def A2(request):
 
-    characters = "abcdefghijklmnopqrstuvwxyz"
+    characters = string.ascii_lowercase
 
     length = int(request.GET.get('length',12))
     if request.GET.get('UpperCase'):
-        characters += characters.upper()
+        characters += string.ascii_uppercase
     if request.GET.get('Number'):
-        characters += '0123456789'
+        characters += string.digits
     if request.GET.get('Special'):
-        characters += "`!~@#$%^&*()_+}{\":<>?/.,;'\][=-]"
+        characters += string.punctuation
     generated_password = ""
 
     characters = list(characters)
